@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generator Coduri QR</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">▣</span>
+      <h1>QR Studio</h1>
+    </div>
+    <button id="themeToggle" class="btn-outline" type="button" aria-label="Schimbă tema">
+      🌙 Mod întunecat
+    </button>
+  </header>
+
+  <main class="container">
+    <!-- Panou configurare -->
+    <section class="card">
+      <h2>Configurează codul QR</h2>
+
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" data-mode="text">Text / Link</button>
+        <button type="button" class="tab" data-mode="wifi">Rețea Wi-Fi</button>
+      </div>
+
+      <form id="qrForm" novalidate>
+        <!-- Câmp Text / Link -->
+        <div id="textFields" class="field-group">
+          <label for="qrText">Text sau adresă URL</label>
+          <input
+            type="text"
+            id="qrText"
+            placeholder="https://exemplu.ro sau orice mesaj..."
+            value="https://github.com"
+            required
+          />
+        </div>
+
+        <!-- Câmpuri Wi-Fi -->
+        <div id="wifiFields" class="field-group hidden">
+          <label for="wifiSsid">Nume rețea (SSID)</label>
+          <input type="text" id="wifiSsid" placeholder="Ex: WiFi_Acasa" />
+
+          <label for="wifiPass">Parolă Wi-Fi</label>
+          <input type="text" id="wifiPass" placeholder="Parola rețelei" />
+
+          <label for="wifiType">Securitate</label>
+          <select id="wifiType">
+            <option value="WPA" selected>WPA / WPA2</option>
+            <option value="WEP">WEP</option>
+            <option value="nopass">Fără parolă</option>
+          </select>
+        </div>
+
+        <!-- Personalizare dimensiune și culori -->
+        <div class="options-row">
+          <div class="option">
+            <label for="qrSize">Dimensiune</label>
+            <select id="qrSize">
+              <option value="200">200 × 200 px</option>
+              <option value="260" selected>260 × 260 px</option>
+              <option value="340">340 × 340 px</option>
+            </select>
+          </div>
+          <div class="option">
+            <label for="qrFg">Culoare QR</label>
+            <input type="color" id="qrFg" value="#111827" />
+          </div>
+          <div class="option">
+            <label for="qrBg">Fundal</label>
+            <input type="color" id="qrBg" value="#ffffff" />
+          </div>
+        </div>
+
+        <p id="errorMsg" class="error hidden" role="alert"></p>
+
+        <button type="submit" class="btn-primary">Generează cod QR</button>
+      </form>
+    </section>
+
+    <!-- Panou previzualizare + descărcare -->
+    <section class="card preview-card">
+      <h2>Previzualizare</h2>
+      <div class="canvas-wrap">
+        <canvas id="qrCanvas"></canvas>
+      </div>
+      <p id="previewLabel" class="muted"></p>
+      <button id="downloadBtn" class="btn-primary" type="button">
+        ⬇ Descarcă PNG
+      </button>
+    </section>
+
+    <!-- Istoric localStorage -->
+    <section class="card history-card">
+      <div class="history-header">
+        <h2>Istoric recent</h2>
+        <button id="clearHistory" class="btn-outline small" type="button">Șterge</button>
+      </div>
+      <ul id="historyList" class="history-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Proiect Programare și Dezvoltare Web · HTML5, CSS3 &amp; JavaScript</p>
+  </footer>
+
+  <!-- Librărie ușoară pentru generarea codurilor QR pe <canvas> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
