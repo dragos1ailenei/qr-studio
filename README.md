@@ -36,5 +36,5 @@ qr-generator/
 
 ## Capturi de ecran & Demo
 
-- **Demo live:** `https://<username>.github.io/<nume-repo>/` *(completează după publicarea pe GitHub Pages)*
+- **Demo live:** `https://dragos1ailenei.github.io/qr-studio/` *(completează după publicarea pe GitHub Pages)*
 - Adaugă capturile de ecran ale aplicației (desktop + mobil) într-un folder `screenshots/` și inserează-le aici.
